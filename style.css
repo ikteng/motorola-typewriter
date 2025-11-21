@@ -1,0 +1,294 @@
+:root {
+    --bg-color: #2c3e50;
+    --beeper-bg: #111;
+    --screen-bg: #a7b98a;
+    --text-color: #111;
+    --accent-color: #e74c3c;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'VT323', monospace;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.machine-container {
+    position: absolute; 
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; 
+    display: flex;
+    justify-content: center;
+}
+
+.machine {
+    width: 330px;
+    background: #1a1a1a;
+    padding: 25px 20px;
+    border-radius: 25px;
+    border: 4px solid #000;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    box-shadow:
+        inset 0 0 10px #000,
+        0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* antenna bump */
+.machine::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 25px;
+    width: 70px;
+    height: 18px;
+    background: #0d0d0d;
+    border-radius: 6px 6px 0 0;
+    border: 2px solid #000;
+    border-bottom: none;
+}
+
+/* speaker grille */
+.machine::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    width: 55px;
+    height: 8px;
+    background: repeating-linear-gradient(
+        to right,
+        #000,
+        #000 4px,
+        #333 4px,
+        #333 7px
+    );
+    border-radius: 3px;
+}
+
+.machine-title{
+    color: #aaa;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+}
+
+.screen {
+    background-color: var(--screen-bg);
+    height: 8vh;
+    border-radius: 5px;
+    border: 4px solid #555;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+    padding: 10px;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.char-counter {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 1rem;
+    font-family: 'VT323', monospace;
+    color: #2b3a1a;
+    opacity: 0.7;
+
+    /* LCD shadow effect */
+    text-shadow: 
+        1px 1px 0 rgba(255,255,255,0.2),
+        -1px -1px 0 rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+
+input[type="text"] {
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    outline: none;
+    text-transform: uppercase;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.clear-btn {
+    width: 40px;
+    background: #2e2e2e;
+    border: 2px solid #000;
+    border-radius: 8px;
+    color: #eee;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: inset 0 -3px 0 #000;
+    padding: 12px 0;
+}
+
+.clear-btn:active {
+    box-shadow: inset 0 0 0 #000;
+    transform: translateY(1px);
+}
+
+.print-btn {
+    flex: 1;
+    background: #2e2e2e;
+    border: 2px solid #000;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+    color: #eee;
+    cursor: pointer;
+    box-shadow:
+        inset 0 -3px 0 #000,
+        0 3px 10px rgba(0,0,0,0.5);
+}
+
+.print-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        inset 0 0 0 #000,
+        0 0 0 rgba(0,0,0,0.3);
+}
+
+#drop-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0; 
+}
+
+.card {
+    position: absolute;
+    width: 180px;
+    min-height: 60px;
+    padding: 12px 16px;
+
+    /* Motorola pager thermal-paper color */
+    background: #fbf7e3;
+
+    /* subtle yellowed edges */
+    background: linear-gradient(
+        to bottom,
+        #f9f3d9 0%,
+        #fbf7e3 40%,
+        #f9f3d9 100%
+    );
+
+    color: #111;
+    font-size: 1.35rem;
+    font-family: 'VT323', monospace;
+    line-height: 1.2;
+
+    border-radius: 3px;
+
+    /* Perforated tear top edge */
+    border-top: 6px dotted rgba(0, 0, 0, 0.3);
+
+    /* horizontal paper lines */
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05) 0px,
+            rgba(0, 0, 0, 0.05) 1px,
+            transparent 1px,
+            transparent 22px
+        ),
+        linear-gradient(
+            to bottom,
+            #f9f3d9,
+            #fbf7e3 50%,
+            #f9f3d9
+        );
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.25),
+        inset 0 0 3px rgba(0,0,0,0.15);
+
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
+    word-wrap: break-word;
+}
+
+.card:active {
+    cursor: grabbing;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.4);
+    transform: scale(1.05);
+    z-index: 1000;
+}
+
+.card-timestamp {
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+    opacity: 0.6;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: #222;
+    animation: blink 0.8s infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.delete-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #2e2e2e;
+    color: #eee;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    cursor: pointer;
+    display: none;
+    border: 2px solid #fff;
+}
+
+.card:hover .delete-btn {
+    display: block;
+}

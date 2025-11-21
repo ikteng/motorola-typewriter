@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorola Typewriter</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="drop-zone"></div>
+
+    <div class="machine-container">
+        <div class="machine">
+            <div class="machine-title">Motorola Typewriter</div>
+
+            <div class="screen">
+                <div class="char-counter">0/120</div>
+                <input type="text" id="text-input" placeholder="ENTER MESSAGE..." maxlength="120" autocomplete="off">
+            </div>
+            
+            <div class="buttons">
+                <button class="clear-btn" onclick="clearText()">x</button>
+                <button class="print-btn" onclick="createCard()">PRINT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
