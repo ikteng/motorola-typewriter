@@ -1,0 +1,24 @@
+/* App.css */
+
+* {
+  font-family: 'VT323', monospace;
+}
+
+:root {
+  --bg-color: #2c3e50;
+  --beeper-bg: #111;
+  --screen-bg: #a7b98a;
+  --text-color: #111;
+  --accent-color: #e74c3c;
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image: 
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
