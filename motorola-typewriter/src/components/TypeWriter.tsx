@@ -59,15 +59,16 @@ export default function Typewriter() {
 
     const machine = document.querySelector('.machine-container')?.getBoundingClientRect();
     const typingCardX = containerRect.width / 2 - cardRect.width / 2;
-    const typingCardBottomY = machine ? machine.top - containerRect.top + 40 : 100;
+    const typingCardStartY = machine ? machine.top - containerRect.top - 60 : 100;
 
     // Create typing card initially empty
-    setTypingCard({ message: "", x: typingCardX, y: typingCardBottomY - cardRect.height });
+    setTypingCard({ message: "", x: typingCardX, y: typingCardStartY });
 
     let i = 0;
     let currentLines = 1;
-    let currentY = typingCardBottomY - cardRect.height;
-    const charsPerLine = 22;
+    let currentY = typingCardStartY;
+    const charsPerLine = 18;
+    const lineHeight = 22;
 
     const interval = setInterval(() => {
       i++;
@@ -76,7 +77,7 @@ export default function Typewriter() {
 
       // Slide up for new line
       if (newLines > currentLines) {
-        currentY -= 20 * (newLines - currentLines);
+        currentY -= lineHeight * (newLines - currentLines);
         currentLines = newLines;
       }
 
@@ -101,7 +102,7 @@ export default function Typewriter() {
         setTimeout(() => {
           setCards(prev => [...prev, { message: newCardText, x: centerX, y: centerY }]);
           setTypingCard(null);
-        }, 300);
+        }, 500);
       }
     }, 50);
   }
