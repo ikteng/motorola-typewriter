@@ -1,0 +1,59 @@
+.card {
+  width: 25vh;
+  min-height: 5vh;
+  padding: 25px 16px;
+  background: #fbf7e3;
+  border-radius: 3px;
+  border-top: 6px dotted rgba(0, 0, 0, 0.3);
+
+  /* paper lines */
+  background-image:
+      repeating-linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.05) 0px,
+          rgba(0, 0, 0, 0.05) 1px,
+          transparent 1px,
+          transparent 22px
+      ),
+      linear-gradient(
+          to bottom,
+          #f9f3d9,
+          #fbf7e3 50%,
+          #f9f3d9
+      );
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: grab;
+  word-wrap: break-word;
+  position: absolute;
+}
+
+.card p {
+  margin: 0;
+  color: #111;
+  font-size: 20px;
+  line-height: 22px; 
+  white-space: pre-wrap;
+  text-transform: uppercase;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background: #2e2e2e;
+  color: #eee;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 12px;
+  cursor: pointer;
+  display: none;
+  border: 2px solid #fff;
+}
+
+.card:hover .delete-btn {
+  display: flex;
+}
